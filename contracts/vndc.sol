@@ -16,7 +16,7 @@ contract VNDC is
     __ERC20_init("VNDC", "VNDC");
     __Ownable_init();
     __ERC20Pausable_init();
-    _mint(_msgSender(), 20_000_000_000 * 10 ** 18);
+    _mint(_msgSender(), 20_000_000_000_000 * 10 ** 18);
   }
 
   function _beforeTokenTransfer(

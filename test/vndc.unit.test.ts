@@ -3,12 +3,12 @@ import { VNDC } from "../typechain";
 import { expect, use } from "chai";
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
 
-const INIT_SUPPLY = BigInt("20000000000000000000000000000");
+const INIT_SUPPLY = BigInt("20000000000000000000000000000000");
 
 describe("vndc unit test", async () => {
   let vndc: VNDC, deployer: SignerWithAddress, user: SignerWithAddress;
   beforeEach(async () => {
-    await deployments.fixture(["all"]);
+    await deployments.fixture(["vndc"]);
     vndc = await ethers.getContract("VNDC");
     deployer = (await ethers.getSigners())[0];
     user = (await ethers.getSigners())[1];
