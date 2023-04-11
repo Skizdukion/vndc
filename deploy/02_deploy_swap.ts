@@ -1,5 +1,7 @@
 import { DeployFunction } from "hardhat-deploy/types";
 import { getNamedAccounts, deployments, network, ethers } from "hardhat";
+import { developmentChains } from "../helper-hardhat-config";
+import { verify } from "../helper-functions";
 
 const deployFunction: DeployFunction = async () => {
   const { deploy, log } = deployments;
@@ -44,7 +46,12 @@ const deployFunction: DeployFunction = async () => {
     deployer,
     ethers.constants.MaxUint256
   );
+
+  if (!developmentChains.includes(network.name) && process.env.BSCSCAN_API_KEY) {
+    await verify(factory.address, [deployer]);
+    await verify(router.address, [factory.address, wEth.address]);
+  }
 };
 
 export default deployFunction;
-deployFunction.tags = [`all`, `factory`, `main`];
+deployFunction.tags = [`all`, `factory`, `swap`];

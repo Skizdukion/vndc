@@ -1,38 +1,39 @@
-import * as dotenv from "dotenv"
+import * as dotenv from "dotenv";
 
-import type { HardhatUserConfig } from "hardhat/config"
+import type { HardhatUserConfig } from "hardhat/config";
 // import type * from "hardhat/common"
-import "@nomiclabs/hardhat-waffle"
-import "@nomiclabs/hardhat-ethers"
-import "@nomiclabs/hardhat-etherscan"
-import "@typechain/hardhat"
+import "@nomiclabs/hardhat-waffle";
+import "@nomiclabs/hardhat-ethers";
+import "@nomiclabs/hardhat-etherscan";
+import "@typechain/hardhat";
 // import "@nomicfoundation/hardhat-network-helpers"
-import "hardhat-deploy"
-import "solidity-coverage"
-import "hardhat-gas-reporter"
-import "hardhat-contract-sizer"
-import "@openzeppelin/hardhat-upgrades"
-import "./tasks"
+import "hardhat-deploy";
+import "solidity-coverage";
+import "hardhat-gas-reporter";
+import "hardhat-contract-sizer";
+import "@openzeppelin/hardhat-upgrades";
+import "./tasks";
 
-dotenv.config()
+dotenv.config();
 
 const MAINNET_RPC_URL =
   process.env.MAINNET_RPC_URL ||
   process.env.ALCHEMY_MAINNET_RPC_URL ||
-  "https://eth-mainnet.alchemyapi.io/v2/your-api-key"
+  "https://eth-mainnet.alchemyapi.io/v2/your-api-key";
 const RINKEBY_RPC_URL =
-  process.env.RINKEBY_RPC_URL || "https://eth-rinkeby.alchemyapi.io/v2/your-api-key"
-const KOVAN_RPC_URL = process.env.KOVAN_RPC_URL || "https://eth-kovan.alchemyapi.io/v2/your-api-key"
+  process.env.RINKEBY_RPC_URL || "https://eth-rinkeby.alchemyapi.io/v2/your-api-key";
+const KOVAN_RPC_URL =
+  process.env.KOVAN_RPC_URL || "https://eth-kovan.alchemyapi.io/v2/your-api-key";
 const POLYGON_MAINNET_RPC_URL =
-  process.env.POLYGON_MAINNET_RPC_URL || "https://polygon-mainnet.alchemyapi.io/v2/your-api-key"
-const PRIVATE_KEY = process.env.PRIVATE_KEY
+  process.env.POLYGON_MAINNET_RPC_URL || "https://polygon-mainnet.alchemyapi.io/v2/your-api-key";
+const PRIVATE_KEY = process.env.PRIVATE_KEY;
 // optional
-const MNEMONIC = process.env.MNEMONIC || "Your mnemonic"
-const FORKING_BLOCK_NUMBER = process.env.FORKING_BLOCK_NUMBER
+const MNEMONIC = process.env.MNEMONIC || "Your mnemonic";
+const FORKING_BLOCK_NUMBER = process.env.FORKING_BLOCK_NUMBER;
 
 // Your API key for Etherscan, obtain one at https://etherscan.io/
-const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || "Your etherscan API key"
-const POLYGONSCAN_API_KEY = process.env.POLYGONSCAN_API_KEY || "Your polygonscan API key"
+const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || "Your etherscan API key";
+const POLYGONSCAN_API_KEY = process.env.POLYGONSCAN_API_KEY || "Your polygonscan API key";
 
 const config: HardhatUserConfig = {
   defaultNetwork: "hardhat",
@@ -114,6 +115,8 @@ const config: HardhatUserConfig = {
       rinkeby: ETHERSCAN_API_KEY,
       kovan: ETHERSCAN_API_KEY,
       polygon: POLYGONSCAN_API_KEY,
+      bscTestnet: process.env.BSCSCAN_API_KEY,
+      bsc: process.env.BSCSCAN_API_KEY,
     },
   },
   gasReporter: {
@@ -186,6 +189,6 @@ const config: HardhatUserConfig = {
     outDir: "typechain",
     target: "ethers-v5",
   },
-}
+};
 
-export default config
+export default config;

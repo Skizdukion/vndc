@@ -12,6 +12,5 @@ const deployFunction: DeployFunction = async () => {
     },
   });
 };
-
 export default deployFunction;
 deployFunction.tags = ["all", "token", "vndc"];
