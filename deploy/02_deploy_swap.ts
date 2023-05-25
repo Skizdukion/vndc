@@ -30,15 +30,15 @@ const deployFunction: DeployFunction = async () => {
   const busd = await ethers.getContract("BUSD");
   const usdt = await ethers.getContract("USDT");
 
-  const vndc = await ethers.getContract("VNDC");
+  const vndt = await ethers.getContract("VNDT");
 
   await busd.approve(router.address, ethers.constants.MaxUint256);
   await usdt.approve(router.address, ethers.constants.MaxUint256);
-  await vndc.approve(router.address, ethers.constants.MaxUint256);
+  await vndt.approve(router.address, ethers.constants.MaxUint256);
 
   await router.addLiquidity(
     busd.address,
-    vndc.address,
+    vndt.address,
     ethers.utils.parseEther("100000000"),
     ethers.utils.parseEther("2345050000000"),
     0,

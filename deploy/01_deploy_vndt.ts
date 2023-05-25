@@ -5,7 +5,7 @@ import { customDeployProxyWrapper } from "../utils/proxyDeploy";
 const deployFunction: DeployFunction = async () => {
   const deployer = (await ethers.getSigners())[0];
 
-  await customDeployProxyWrapper("VNDC", {
+  await customDeployProxyWrapper("VNDT", {
     from: deployer,
     proxyOpts: {
       initializer: "initialize()",

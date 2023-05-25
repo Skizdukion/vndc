@@ -7,10 +7,8 @@ cache
 # deployments
 node_modules
 coverage
-price
-generated_path
-crawl
 coverage.json
+deployments
 
 # don't push the environment vars!
 .env

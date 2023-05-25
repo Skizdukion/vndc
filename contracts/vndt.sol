@@ -6,14 +6,14 @@ import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/token/ERC20/extensions/ERC20PausableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 
-contract VNDC is
+contract VNDT is
   Initializable,
   ERC20Upgradeable,
   ERC20PausableUpgradeable,
   OwnableUpgradeable
 {  
   function initialize() public initializer {
-    __ERC20_init("VNDC", "VNDC");
+    __ERC20_init("Vietnamese Dong Tether", "VNDT");
     __Ownable_init();
     __ERC20Pausable_init();
     _mint(_msgSender(), 20_000_000_000_000 * 10 ** 18);
